@@ -81,7 +81,7 @@ export default function SignUpForm() {
     // formDataObject.append('regCertificate', selectedFile);
     // console.log(formDataObject)
     try {
-      const response = await axios.post('http://localhost:8000/api/hospital', formData,{
+      const response = await axios.post('https://sa-hospital.onrender.com/api/hospital', formData,{
         headers: {
           'Content-Type': 'multipart/form-data',
         }});

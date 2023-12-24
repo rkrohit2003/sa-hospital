@@ -10,7 +10,8 @@ import Paper from '@mui/material/Paper';
 export default function BasicTable() {
   const [rows, setRows] = useState([]);
   useEffect(() => {
-    fetch('http://localhost:8000/api/hospitals')
+    // fetch('http://localhost:8000/api/hospitals')
+    fetch('https://sa-hospital.onrender.com/api/hospitals')
       .then(response => response.json())
       .then(data => setRows(data))
       .catch(error => console.error('Error fetching data:', error));
