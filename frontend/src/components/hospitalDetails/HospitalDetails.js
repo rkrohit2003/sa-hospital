@@ -6,11 +6,12 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { IconButton, Toolbar, Tooltip, Typography } from '@mui/material';
+import FilterListIcon from '@mui/icons-material/FilterList';
 
 export default function BasicTable() {
   const [rows, setRows] = useState([]);
   useEffect(() => {
-    // fetch('http://localhost:8000/api/hospitals')
     fetch('https://sa-hospital.onrender.com/api/hospitals')
       .then(response => response.json())
       .then(data => setRows(data))
@@ -19,29 +20,105 @@ export default function BasicTable() {
 
   return (
     <TableContainer component={Paper}>
+      <Toolbar
+      sx={{
+        pl: { sm: 2 },
+        pr: { xs: 1, sm: 1 }
+      }}
+    >
+      <Typography
+          sx={{ flex: '1 1 100%' }}
+          variant="h6"
+          id="tableTitle"
+          component="div"
+        >
+          Hospital Registrations
+        </Typography>
+        <Tooltip title="Filter list">
+          <IconButton>
+            <FilterListIcon />
+          </IconButton>
+        </Tooltip>
+        </Toolbar>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell>No.</TableCell>
-            <TableCell align="right">Date & Time</TableCell>
-            <TableCell align="right">Hospital Name</TableCell>
-            <TableCell align="right">Email</TableCell>
-            <TableCell align="right">Address</TableCell>
-            <TableCell align="right">Phone No.</TableCell>
-            <TableCell align="right">City</TableCell>
-            <TableCell align="right">State</TableCell>
-            <TableCell align="right">Pincode</TableCell>
-            <TableCell align="right">Hospital Registration Date</TableCell>
-            <TableCell align="right">Hospital Registration Number</TableCell>
-            <TableCell align="right">Emergency Ward Number</TableCell>
-            <TableCell align="right">Numberof Ambulance </TableCell>
-            <TableCell align="right">Status</TableCell>
+            <TableCell>
+            <Typography variant="subtitle1" fontWeight="bold">
+                No.
+              </Typography>
+            </TableCell>
+            <TableCell align="right">
+              <Typography variant="subtitle1" fontWeight="bold">
+                Date & Time
+              </Typography>
+              </TableCell>
+            <TableCell align="right">
+              <Typography variant="subtitle1" fontWeight="bold">
+                Hospital Name
+              </Typography>
+              </TableCell>
+            <TableCell align="right">
+              <Typography variant="subtitle1" fontWeight="bold">
+                Email
+              </Typography>
+              </TableCell>
+            <TableCell align="right">
+              <Typography variant="subtitle1" fontWeight="bold">
+                Address
+              </Typography>
+              </TableCell>
+            <TableCell align="right">
+              <Typography variant="subtitle1" fontWeight="bold">
+                Phone No.
+              </Typography>
+              </TableCell>
+            <TableCell align="right">
+              <Typography variant="subtitle1" fontWeight="bold">
+                City
+              </Typography>
+              </TableCell>
+            <TableCell align="right">
+              <Typography variant="subtitle1" fontWeight="bold">
+                State
+              </Typography>
+              </TableCell>
+            <TableCell align="right">
+              <Typography variant="subtitle1" fontWeight="bold">
+                Pincode
+              </Typography>
+              </TableCell>
+            <TableCell align="right">
+              <Typography variant="subtitle1" fontWeight="bold">
+                Hospital Registration Date
+              </Typography>
+              </TableCell>
+            <TableCell align="right">
+              <Typography variant="subtitle1" fontWeight="bold">
+                Hospital Registration Number
+              </Typography>
+              </TableCell>
+            <TableCell align="right">
+              <Typography variant="subtitle1" fontWeight="bold">
+                Emergency Ward Number
+              </Typography>
+              </TableCell>
+            <TableCell align="right">
+              <Typography variant="subtitle1" fontWeight="bold">
+                Number of Ambulance
+              </Typography>
+               </TableCell>
+            <TableCell align="right">
+              <Typography variant="subtitle1" fontWeight="bold">
+                Status
+              </Typography>
+              </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {rows.map((row,index) => (
             <TableRow
-              key={index} // Using array index as the key
+              key={index}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               <TableCell component="th" scope="row">
